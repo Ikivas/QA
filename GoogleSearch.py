@@ -12,14 +12,11 @@ PHRASE = 'What is Selenium'
 
 elem = driver.find_element_by_name("q")
 elem.send_keys(PHRASE)
-# elem.send_keys(Keys.RETURN)
+elem.send_keys(Keys.RETURN)
 
-while True:
-  try:
+try:
     webdriver.support.ui.WebDriverWait(driver, 5).until(expected_conditions.presence_of_element_located((By.CSS_SELECTOR, 'div[class="srg"')))
-    break
-  except TimeoutException:
+except TimeoutException:
     print("Loading took too much time! Check if you pressed Enter!")
-    break
 
 time.sleep(5)
