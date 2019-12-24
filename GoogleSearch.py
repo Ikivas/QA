@@ -12,6 +12,7 @@ PHRASE = 'What is Selenium'
 
 elem = driver.find_element_by_name("q")
 elem.send_keys(PHRASE)
+# elem.send_keys(Keys.RETURN)
 
 while True:
   try:
