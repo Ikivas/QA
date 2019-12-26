@@ -4,7 +4,7 @@ from selenium.webdriver.common.keys import Keys
 from selenium.common.exceptions import NoSuchElementException        
 
 class InvalidPageError(Exception):
-  pass
+    pass
 
 driver = webdriver.Chrome()
 driver.get("http://google.com")
@@ -20,4 +20,3 @@ except NoSuchElementException:
     raise InvalidPageError()
 finally:
     driver.close()
-
