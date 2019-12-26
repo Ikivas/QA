@@ -1,10 +1,10 @@
 import time
 from selenium import webdriver
-from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
-from selenium.common.exceptions import TimeoutException
-from selenium.webdriver.support import expected_conditions
+from selenium.common.exceptions import NoSuchElementException        
 
+class InvalidPageError(Exception):
+  pass
 
 driver = webdriver.Chrome()
 driver.get("http://google.com")
@@ -15,8 +15,9 @@ elem.send_keys(PHRASE)
 elem.send_keys(Keys.RETURN)
 
 try:
-    webdriver.support.ui.WebDriverWait(driver, 5).until(expected_conditions.presence_of_element_located((By.CSS_SELECTOR, 'div[class="srg"')))
-except TimeoutException:
-    print("Loading took too much time! Check if you pressed Enter!")
+    driver.find_element_by_css_selector('div[class="srg"')
+except NoSuchElementException:
+    raise InvalidPageError()
+finally:
+    driver.close()
 
-time.sleep(5)
