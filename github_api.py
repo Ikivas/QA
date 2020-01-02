@@ -6,7 +6,7 @@ import requests
 from requests.exceptions import HTTPError
 
 url = 'https://api.github.com'
-g = '/users/Ikivas/repos'
+git_user_path = '/users/Ikivas/repos'
 
 response = requests.get(url + g)
 response.raise_for_status()
